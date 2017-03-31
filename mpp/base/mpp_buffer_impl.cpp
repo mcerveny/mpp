@@ -635,10 +635,9 @@ MppBufferGroupImpl *MppBufferService::get_group(const char *tag, const char *cal
 
 MppBufferGroupImpl *MppBufferService::get_misc_group(MppBufferMode mode, MppBufferType type)
 {
-    if (type == MPP_BUFFER_TYPE_NORMAL)
+    if (type != MPP_BUFFER_TYPE_ION)
         return NULL;
 
-    mpp_assert(type == MPP_BUFFER_TYPE_ION);
     mpp_assert(mode < MPP_BUFFER_MODE_BUTT);
     return (mode == MPP_BUFFER_INTERNAL) ? (misc_ion_int) : (misc_ion_ext);
 }
